@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MarkerlessARScene.unity
+    path: Assets/Scenes/MarkerlessARScene.unity
     guid: c72de62f026454a7fb5a2f33661f3462
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 9d9cbb1bd9afe4c6fb2dcc434d7ada61, type: 2}

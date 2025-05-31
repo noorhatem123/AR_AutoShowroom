@@ -43,14 +43,28 @@ public class ARPlacementController : MonoBehaviour
         {
             Pose hitPose = hits[0].pose;
 
-Vector3 adjustedPosition = hitPose.position;
-adjustedPosition.y = 0.1f; // optional height control
+            Vector3 adjustedPosition = hitPose.position;
+            adjustedPosition.y = 0.1f; // optional height control
 
-Quaternion uprightRotation = Quaternion.Euler(0, hitPose.rotation.eulerAngles.y, 0);
+            Quaternion uprightRotation = Quaternion.Euler(0, hitPose.rotation.eulerAngles.y, 0);
 
-spawnedObject = Instantiate(placedPrefab, adjustedPosition, uprightRotation);
+            spawnedObject = Instantiate(placedPrefab, adjustedPosition, uprightRotation);
+            isPlaced = true;
 
             Debug.Log("Car placed at: " + adjustedPosition);
+
+            // 🌟 Automatically assign CarColorCycler to CarUIController
+            CarColorCycler cycler = spawnedObject.GetComponent<CarColorCycler>();
+            CarUIController uiController = FindObjectOfType<CarUIController>();
+            if (uiController != null && cycler != null)
+            {
+                uiController.colorCycler = cycler;
+                Debug.Log("CarColorCycler assigned to UI Controller.");
+            }
+            else
+            {
+                Debug.LogWarning("CarColorCycler or CarUIController not found.");
+            }
         }
     }
 }
