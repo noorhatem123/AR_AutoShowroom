@@ -229,7 +229,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 710003b3c07874f5ebea683d0775528a, type: 2}
   - {fileID: 2100000, guid: 32d3a9dea9dff4741a2cd81b53031b6b, type: 2}
   - {fileID: 2100000, guid: 7d130936ab1d34a60ab71df28f52f48a, type: 2}
-  carRenderer: {fileID: 5073047867265298341}
+  carRenderers:
+  - {fileID: 9146277271474941790}
+  - {fileID: 4760392979463512152}
+  - {fileID: 5073047867265298341}
 --- !u!1 &2155205634454047879
 GameObject:
   m_ObjectHideFlags: 0
