@@ -5,12 +5,14 @@ public class CarUIController : MonoBehaviour
     private CarColorCycler colorCycler;
     private GameObject doorFL;
     private GameObject doorFR;
+    private EngineSoundController engineSound;
 
     public void SetCar(GameObject car)
     {
         colorCycler = car.GetComponentInChildren<CarColorCycler>();
         doorFL = car.transform.Find("door_fl")?.gameObject;
         doorFR = car.transform.Find("door_fr")?.gameObject;
+        engineSound = car.GetComponentInChildren<EngineSoundController>();
     }
 
     public void ChangeCarColor()
@@ -39,4 +41,9 @@ public class CarUIController : MonoBehaviour
         if (doorFR != null)
             doorFR.GetComponent<DoorController>()?.ToggleDoor();
     }
+    public void ToggleEngine()
+    {
+        engineSound?.ToggleEngine();
+    }
+
 }
