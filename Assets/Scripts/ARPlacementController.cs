@@ -52,6 +52,13 @@ public class ARPlacementController : MonoBehaviour
             isPlaced = true;
 
             Debug.Log("Car placed at: " + adjustedPosition);
+
+            // 🔗 Pass the new car to the CarUIController
+            CarUIController carUI = FindObjectOfType<CarUIController>();
+            if (carUI != null)
+            {
+                carUI.SetCar(spawnedObject);
+            }
         }
     }
 }
