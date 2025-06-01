@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4403720318460985654}
   - component: {fileID: 8775404375458799816}
   - component: {fileID: 6605221787185597514}
+  - component: {fileID: 6740062239990476766}
   m_Layer: 0
   m_Name: RearLeftWheel
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6740062239990476766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506867197707200423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedfc9c61d3243d8a403fe55c98ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 200
 --- !u!1 &870814137601213047
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   - component: {fileID: 6070261184248538617}
   - component: {fileID: 1029322924227006586}
   - component: {fileID: 4756495926618981452}
+  - component: {fileID: 4627318675006598165}
   m_Layer: 0
   m_Name: FrontLeftWheel
   m_TagString: Untagged
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4627318675006598165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870814137601213047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedfc9c61d3243d8a403fe55c98ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 200
 --- !u!1 &1016178144663240709
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +240,7 @@ GameObject:
   - component: {fileID: 1865161760722637271}
   - component: {fileID: 4869791117560929778}
   - component: {fileID: 6264273261718689076}
+  - component: {fileID: 181256753112651988}
   m_Layer: 0
   m_Name: RearRightWheel
   m_TagString: Untagged
@@ -284,6 +313,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &181256753112651988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536369929474923789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedfc9c61d3243d8a403fe55c98ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 200
 --- !u!1 &2067766124794820561
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651829212159705110}
   - component: {fileID: 2425702187938561298}
+  - component: {fileID: 677078799564700625}
   m_Layer: 0
   m_Name: FrontRightWheel
   m_TagString: Untagged
@@ -355,6 +398,19 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!114 &677078799564700625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067766124794820561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedfc9c61d3243d8a403fe55c98ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 200
 --- !u!1 &2779413761549556013
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +616,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7252485110826962975}
@@ -624,6 +680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2887314674813860571}
   - component: {fileID: 7885242668000034200}
+  - component: {fileID: 5595057010790064286}
   m_Layer: 0
   m_Name: RearLeftWheel
   m_TagString: Untagged
@@ -685,6 +742,19 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!114 &5595057010790064286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701874405132303693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedfc9c61d3243d8a403fe55c98ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 200
 --- !u!1 &7340164514954009416
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4234162459673573231}
   - component: {fileID: 8692333545648001060}
+  - component: {fileID: 8971136529647004328}
   m_Layer: 0
   m_Name: RearRightWheel
   m_TagString: Untagged
@@ -839,6 +910,19 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!114 &8971136529647004328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438154651710707617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedfc9c61d3243d8a403fe55c98ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 200
 --- !u!1 &7494307137874730397
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +969,7 @@ GameObject:
   - component: {fileID: 8950817590737882882}
   - component: {fileID: 6310722356499804409}
   - component: {fileID: 7941564602174578678}
+  - component: {fileID: 1255576564337849922}
   m_Layer: 0
   m_Name: FrontRightWheel
   m_TagString: Untagged
@@ -957,6 +1042,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1255576564337849922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542340628451606520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedfc9c61d3243d8a403fe55c98ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 200
 --- !u!1 &8864311345070134150
 GameObject:
   m_ObjectHideFlags: 0

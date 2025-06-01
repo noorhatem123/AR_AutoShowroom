@@ -52,19 +52,6 @@ public class ARPlacementController : MonoBehaviour
             isPlaced = true;
 
             Debug.Log("Car placed at: " + adjustedPosition);
-
-            // 🌟 Automatically assign CarColorCycler to CarUIController
-            CarColorCycler cycler = spawnedObject.GetComponent<CarColorCycler>();
-            CarUIController uiController = FindObjectOfType<CarUIController>();
-            if (uiController != null && cycler != null)
-            {
-                uiController.colorCycler = cycler;
-                Debug.Log("CarColorCycler assigned to UI Controller.");
-            }
-            else
-            {
-                Debug.LogWarning("CarColorCycler or CarUIController not found.");
-            }
         }
     }
 }
