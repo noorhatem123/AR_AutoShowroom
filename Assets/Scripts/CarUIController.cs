@@ -7,6 +7,10 @@ public class CarUIController : MonoBehaviour
     private GameObject doorFR;
     private EngineSoundController engineSound;
 
+    // 👇 Add this to link to ARPlacementController
+    [Header("AR Placement Reference")]
+    public ARPlacementController placementController;
+
     public void SetCar(GameObject car)
     {
         colorCycler = car.GetComponentInChildren<CarColorCycler>();
@@ -41,9 +45,22 @@ public class CarUIController : MonoBehaviour
         if (doorFR != null)
             doorFR.GetComponent<DoorController>()?.ToggleDoor();
     }
+
     public void ToggleEngine()
     {
         engineSound?.ToggleEngine();
     }
 
+    // 👇 New methods to select cars via UI
+    public void SelectCarA()
+    {
+        if (placementController != null)
+            placementController.SelectCar(0);
+    }
+
+    public void SelectCarB()
+    {
+        if (placementController != null)
+            placementController.SelectCar(1);
+    }
 }

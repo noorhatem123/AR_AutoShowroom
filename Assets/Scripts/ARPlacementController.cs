@@ -5,7 +5,10 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ARPlacementController : MonoBehaviour
 {
-    public GameObject placedPrefab;
+    [Tooltip("Assign both car prefabs here (e.g., Car A at index 0, Car B at index 1)")]
+    public GameObject[] carPrefabs;
+
+    private int selectedIndex = 0;
     private GameObject spawnedObject;
     private ARRaycastManager raycastManager;
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -14,6 +17,14 @@ public class ARPlacementController : MonoBehaviour
     void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
+    }
+
+    // Called by UI buttons to switch car type
+    public void SelectCar(int index)
+    {
+        selectedIndex = index;
+        isPlaced = false; // Allow re-placing if needed
+        Debug.Log("Selected car index: " + selectedIndex);
     }
 
     void Update()
@@ -48,12 +59,12 @@ public class ARPlacementController : MonoBehaviour
 
             Quaternion uprightRotation = Quaternion.Euler(0, hitPose.rotation.eulerAngles.y, 0);
 
-            spawnedObject = Instantiate(placedPrefab, adjustedPosition, uprightRotation);
+            spawnedObject = Instantiate(carPrefabs[selectedIndex], adjustedPosition, uprightRotation);
             isPlaced = true;
 
             Debug.Log("Car placed at: " + adjustedPosition);
 
-            // 🔗 Pass the new car to the CarUIController
+            // Pass the new car to CarUIController
             CarUIController carUI = FindObjectOfType<CarUIController>();
             if (carUI != null)
             {
