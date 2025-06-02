@@ -8,7 +8,7 @@ public class ARPlacementController : MonoBehaviour
     [Tooltip("Assign both car prefabs here (e.g., Car A at index 0, Car B at index 1)")]
     public GameObject[] carPrefabs;
 
-    private int selectedIndex = 0;
+    private int selectedIndex = -1; // No car selected by default
     private GameObject spawnedObject;
     private ARRaycastManager raycastManager;
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -23,13 +23,13 @@ public class ARPlacementController : MonoBehaviour
     public void SelectCar(int index)
     {
         selectedIndex = index;
-        isPlaced = false; // Allow re-placing if needed
+        isPlaced = false;
         Debug.Log("Selected car index: " + selectedIndex);
     }
 
     void Update()
     {
-        if (isPlaced)
+        if (isPlaced || selectedIndex < 0)
             return;
 
         Vector2 touchPosition;
@@ -55,7 +55,7 @@ public class ARPlacementController : MonoBehaviour
             Pose hitPose = hits[0].pose;
 
             Vector3 adjustedPosition = hitPose.position;
-            adjustedPosition.y = 0.1f; // optional height control
+            adjustedPosition.y = 0.1f;
 
             Quaternion uprightRotation = Quaternion.Euler(0, hitPose.rotation.eulerAngles.y, 0);
 
@@ -64,12 +64,22 @@ public class ARPlacementController : MonoBehaviour
 
             Debug.Log("Car placed at: " + adjustedPosition);
 
-            // Pass the new car to CarUIController
             CarUIController carUI = FindObjectOfType<CarUIController>();
             if (carUI != null)
             {
                 carUI.SetCar(spawnedObject);
             }
+        }
+    }
+
+    public void ResetPlacement()
+    {
+        if (spawnedObject != null)
+        {
+            Destroy(spawnedObject);
+            spawnedObject = null;
+            isPlaced = false;
+            Debug.Log("Car reset.");
         }
     }
 }

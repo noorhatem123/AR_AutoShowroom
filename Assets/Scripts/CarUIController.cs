@@ -63,4 +63,9 @@ public class CarUIController : MonoBehaviour
         if (placementController != null)
             placementController.SelectCar(1);
     }
+    public void ResetCar()
+{
+    placementController?.ResetPlacement();
+}
+
 }
