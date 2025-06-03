@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 6760732133129688776}
   - component: {fileID: 3711369710245497732}
   m_Layer: 0
-  m_Name: jeep
+  m_Name: Jeep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
