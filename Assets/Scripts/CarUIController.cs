@@ -71,6 +71,7 @@ public class CarUIController : MonoBehaviour
 
     public void ResetCar()
     {
-        placementController?.ResetPlacement();
+        if (placementController != null)
+            placementController.ResetPlacement();
     }
 }

@@ -2,19 +2,13 @@ using UnityEngine;
 
 public class EngineSoundController : MonoBehaviour
 {
-    private AudioSource audioSource;
-    public bool isRunning = false;
+    public AudioSource audioSource;
 
-    void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    private bool engineOn = false;
 
     public void ToggleEngine()
     {
-        if (!audioSource) return;
-
-        if (isRunning)
+        if (engineOn)
         {
             audioSource.Stop();
         }
@@ -23,6 +17,15 @@ public class EngineSoundController : MonoBehaviour
             audioSource.Play();
         }
 
-        isRunning = !isRunning;
+        engineOn = !engineOn;
+    }
+
+    public void StopEngine()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+            engineOn = false;
+        }
     }
 }

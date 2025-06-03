@@ -11,4 +11,12 @@ public class VoiceoverPlayer : MonoBehaviour
             audioSource.Play();
         }
     }
+    public void StopVoiceover()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
+
 }

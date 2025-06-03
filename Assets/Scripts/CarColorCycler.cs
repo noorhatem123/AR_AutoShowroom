@@ -9,6 +9,13 @@ public class CarColorCycler : MonoBehaviour
     public MeshRenderer[] carRenderers;
 
     private int currentIndex = 0;
+    private int originalIndex = 0; // always reset to this
+
+    void Start()
+    {
+        // Ensure original color is set on start
+        ApplyColor(originalIndex);
+    }
 
     // This method will be called from the UI button
     public void CycleColor()
@@ -22,10 +29,23 @@ public class CarColorCycler : MonoBehaviour
         // Advance to the next material
         currentIndex = (currentIndex + 1) % paintOptions.Length;
 
-        // Apply the selected material to all assigned renderers
+        ApplyColor(currentIndex);
+    }
+
+    public void ResetColor()
+    {
+        currentIndex = originalIndex;
+        ApplyColor(currentIndex);
+    }
+
+    private void ApplyColor(int index)
+    {
+        if (paintOptions.Length == 0 || carRenderers.Length == 0)
+            return;
+
         foreach (MeshRenderer renderer in carRenderers)
         {
-            renderer.material = paintOptions[currentIndex];
+            renderer.material = paintOptions[index];
         }
     }
 }

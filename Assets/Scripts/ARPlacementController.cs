@@ -14,6 +14,10 @@ public class ARPlacementController : MonoBehaviour
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private bool isPlaced = false;
 
+    // 🔁 Added to store original transform
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+
     void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
@@ -65,6 +69,11 @@ public class ARPlacementController : MonoBehaviour
             }
 
             spawnedObject = Instantiate(carPrefabs[selectedIndex], adjustedPosition, uprightRotation);
+
+            // 🔁 Save initial transform
+            initialPosition = adjustedPosition;
+            initialRotation = uprightRotation;
+
             isPlaced = true;
 
             Debug.Log("Car placed at: " + adjustedPosition);
@@ -81,10 +90,44 @@ public class ARPlacementController : MonoBehaviour
     {
         if (spawnedObject != null)
         {
-            Destroy(spawnedObject);
-            spawnedObject = null;
-            isPlaced = false;
-            Debug.Log("Car reset.");
+            // Reset position and rotation
+            spawnedObject.transform.SetPositionAndRotation(initialPosition, initialRotation);
+
+            // Reset color
+            CarColorCycler colorCycler = spawnedObject.GetComponentInChildren<CarColorCycler>();
+            if (colorCycler != null)
+            {
+                colorCycler.ResetColor(); // make sure you implement this method
+            }
+
+            // Reset doors
+            foreach (var door in spawnedObject.GetComponentsInChildren<DoorController>())
+            {
+                door.ResetDoor(); // make sure you implement this method
+            }
+
+            // Stop wheels
+            foreach (var rotator in spawnedObject.GetComponentsInChildren<WheelRotator>())
+            {
+                rotator.enabled = false;
+            }
+
+            // Stop engine sound
+            EngineSoundController engine = spawnedObject.GetComponentInChildren<EngineSoundController>();
+            if (engine != null)
+            {
+                engine.StopEngine(); // implement StopEngine()
+            }
+
+            // Stop voiceover
+            VoiceoverPlayer voice = spawnedObject.GetComponentInChildren<VoiceoverPlayer>();
+            if (voice != null)
+            {
+                voice.StopVoiceover(); // implement StopVoiceover()
+            }
+
+            Debug.Log("Car fully reset to default state.");
         }
     }
+
 }

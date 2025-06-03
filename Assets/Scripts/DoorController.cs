@@ -19,12 +19,18 @@ public class DoorController : MonoBehaviour
     {
         isOpen = !isOpen;
         StopAllCoroutines();
-        StartCoroutine(RotateDoor());
+        StartCoroutine(RotateDoor(isOpen ? openRotation : closedRotation));
     }
 
-    private System.Collections.IEnumerator RotateDoor()
+    public void ResetDoor()
     {
-        Quaternion targetRotation = isOpen ? openRotation : closedRotation;
+        isOpen = false;
+        StopAllCoroutines();
+        StartCoroutine(RotateDoor(closedRotation));
+    }
+
+    private System.Collections.IEnumerator RotateDoor(Quaternion targetRotation)
+    {
         while (Quaternion.Angle(transform.localRotation, targetRotation) > 0.5f)
         {
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * openSpeed);
