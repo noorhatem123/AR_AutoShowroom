@@ -59,6 +59,11 @@ public class ARPlacementController : MonoBehaviour
 
             Quaternion uprightRotation = Quaternion.Euler(0, hitPose.rotation.eulerAngles.y, 0);
 
+            if (spawnedObject != null)
+            {
+                Destroy(spawnedObject);
+            }
+
             spawnedObject = Instantiate(carPrefabs[selectedIndex], adjustedPosition, uprightRotation);
             isPlaced = true;
 
