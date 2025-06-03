@@ -13,11 +13,20 @@ public class CarColorCycler : MonoBehaviour
 
     void Start()
     {
-        // Ensure original color is set on start
-        ApplyColor(originalIndex);
+        // Load saved color if exists, otherwise use original
+        if (PlayerPrefs.HasKey("CarColorIndex"))
+        {
+            currentIndex = PlayerPrefs.GetInt("CarColorIndex");
+        }
+        else
+        {
+            currentIndex = originalIndex;
+        }
+
+        ApplyColor(currentIndex);
     }
 
-    // This method will be called from the UI button
+    // Called from the UI button
     public void CycleColor()
     {
         if (paintOptions.Length == 0 || carRenderers.Length == 0)
@@ -30,12 +39,20 @@ public class CarColorCycler : MonoBehaviour
         currentIndex = (currentIndex + 1) % paintOptions.Length;
 
         ApplyColor(currentIndex);
+
+        // Save color index to PlayerPrefs
+        PlayerPrefs.SetInt("CarColorIndex", currentIndex);
+        PlayerPrefs.Save();
     }
 
     public void ResetColor()
     {
         currentIndex = originalIndex;
         ApplyColor(currentIndex);
+
+        // Optional: reset saved state too
+        PlayerPrefs.SetInt("CarColorIndex", originalIndex);
+        PlayerPrefs.Save();
     }
 
     private void ApplyColor(int index)
