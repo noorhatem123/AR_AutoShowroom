@@ -12,4 +12,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("MarkerBasedScene");
     }
+    public void LoadStartupScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartupScene");
+    }
 }
